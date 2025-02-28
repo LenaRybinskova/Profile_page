@@ -1,11 +1,13 @@
 import { configureStore, ThunkDispatch } from "@reduxjs/toolkit"
 import { GetAboutUsInfo, publicReducer } from "../features/publicPage/model/publicReducer"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
+import { authReducer } from "../features/auth/model/authSlice"
 
 
 export const store = configureStore({
   reducer: {
-    public: publicReducer
+    public: publicReducer,
+    auth: authReducer,
   }
 })
 
