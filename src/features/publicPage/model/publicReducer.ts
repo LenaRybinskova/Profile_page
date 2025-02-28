@@ -1,6 +1,4 @@
 import { publicApi } from "../api/publicApi"
-import type { Reducer } from "@reduxjs/toolkit";
-
 
 
 const initialState = {

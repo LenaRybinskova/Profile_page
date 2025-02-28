@@ -1,22 +1,20 @@
 import styles from "./Header.module.scss"
 import { LinkCustom } from "../LinkCustom/index"
+import { useAppSelector } from "../../../app/store"
 
-type Props = {
-  auth?: boolean
-}
 
-export const Header = ({ auth = false }: Props) => {
+export const Header = () => {
 
-  // селектор аус
-
+  const isAuth = useAppSelector<string>((state) => state.auth.email)
 
   return (
     <header className={styles.containerHeader}>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <LinkCustom to={"/"}>About us</LinkCustom>
-          <LinkCustom to={"/login"}>Sign in</LinkCustom>
-          {auth ? <LinkCustom to={"/profile"}>Profile</LinkCustom> : ""}
+          {isAuth
+            ? <><LinkCustom to={"/profile"}>Profile</LinkCustom> <LinkCustom to={"/login"}>Sign out</LinkCustom> </>
+            : <LinkCustom to={"/login"}>Sign in</LinkCustom>}
         </ul>
       </nav>
     </header>
