@@ -1,5 +1,4 @@
-import { Token } from "src/features/auth/api/authApi.types"
-import { GetQuote } from "src/features/quote/api/quoteApi.types"
+import type { GetQuote } from "@/features/quote/api/quoteApi.types"
 
 export const quoteApi = {
   getQuote: (data: GetQuote) => {
