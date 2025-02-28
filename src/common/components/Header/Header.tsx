@@ -11,17 +11,15 @@ export const Header = ({ auth = false }: Props) => {
 
 
   return (
-    <div className={styles.container}>
-      <nav>
+    <header className={styles.containerHeader}>
+      <nav className={styles.nav}>
         <ul className={styles.navList}>
           <LinkCustom to={"/"}>About us</LinkCustom>
           <LinkCustom to={"/login"}>Sign in</LinkCustom>
           {auth ? <LinkCustom to={"/profile"}>Profile</LinkCustom> : ""}
         </ul>
-
       </nav>
-
-    </div>
+    </header>
 
   )
 }
