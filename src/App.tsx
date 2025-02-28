@@ -2,7 +2,7 @@ import "./App.css"
 
 const App = () => {
   return (
-    <div>LENA</div>
+    <div> LENA</div>
   )
 }
 
