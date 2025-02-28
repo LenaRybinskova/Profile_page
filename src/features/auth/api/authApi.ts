@@ -1,4 +1,4 @@
-import type { LoginArgs } from './authApi.types'
+import type { LoginArgs, Token } from "./authApi.types"
 
 export const authApi = {
   login: (data: LoginArgs) =>
@@ -7,9 +7,15 @@ export const authApi = {
       data: { token: "fb566635a66295da0c8ad3f467c32dcf" }
     }),
 
-  logout: (token: string) =>
-    Promise.resolve({
-      success: true,
-      data: {}
+  logout: (data: Token) => {
+    return new Promise((resolve) => {
+      if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
+        resolve({
+          success: true,
+          data: {}
+        })
+      }
     })
+  },
 }
+

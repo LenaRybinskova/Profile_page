@@ -16,5 +16,19 @@ export const profileApi = {
         reject(new Error("Invalid token"))
       }
     })
+  },
+
+  getAuthor: (data: Token) => {
+    return new Promise((resolve) => {
+      if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
+        resolve({
+          success: true,
+          data: {
+            authorId: 1,
+            name: "Charlie Chaplin"
+          }
+        })
+      }
+    })
   }
 }
