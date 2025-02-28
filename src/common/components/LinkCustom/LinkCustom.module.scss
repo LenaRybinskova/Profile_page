@@ -1,0 +1,18 @@
+.link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3c3f41;
+
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 2px solid #dddddd;
+    background-color: transparent;
+
+    font-weight: 500;
+    font-size: 16px;
+
+    text-align: center;
+    cursor: pointer;
+    max-height: 70px;
+}
