@@ -2,22 +2,24 @@ import { configureStore, ThunkDispatch } from "@reduxjs/toolkit"
 import { GetAboutUsInfo, publicReducer } from "../features/publicPage/model/publicReducer"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { authReducer } from "../features/auth/model/authSlice"
+import { quotesReducer } from "../features/quote/model/quotesReducer"
 
 
 export const store = configureStore({
   reducer: {
     public: publicReducer,
     auth: authReducer,
+    quotes: quotesReducer
   }
 })
 
 export type AppRootStateType = ReturnType<typeof store.getState>;
 
-export type AppRootActions= GetAboutUsInfo;
+export type AppRootActions = GetAboutUsInfo;
 
 export type AppThunkDispatch = ThunkDispatch<AppRootStateType, any, AppRootActions>
 
-export const useAppDispatch = () => useDispatch<AppThunkDispatch>();
+export const useAppDispatch = () => useDispatch<AppThunkDispatch>()
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 
 

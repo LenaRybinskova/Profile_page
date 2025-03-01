@@ -1,24 +1,30 @@
 import { Button } from "../../../common/components/Button/Button"
 import { useEffect, useState } from "react"
-import { Modal, ModalContent } from "../../../common/components/Modal/Modal"
+import { Modal } from "../../../common/components/Modal/Modal"
 import { useAppSelector } from "../../../app/store"
 import { useNavigate } from "react-router-dom"
 import styles from "./Profile.module.scss"
-import { Profile } from "../../profile/api/profileApi.types"
+import { AuthorAndQuote, Profile } from "../../profile/api/profileApi.types"
+import { ModalContent } from "../../quote/ui/ModalContent"
+
 
 export const ProfilePage = () => {
-
   const [isOpenModal, setIsOpenModal] = useState(false)
+  const [concateText, setConcateText] = useState<string>("")
   const navigate = useNavigate()
+
 
   const isAuth = useAppSelector<string>((state) => state.auth.email)
   const avatar = useAppSelector<string>((state) => state.auth.avatar)
   const profile = useAppSelector<Profile>((state) => state.auth.profile)
 
+
   const handleUpdateQuote = () => {
     setIsOpenModal(true)
+  }
 
-    //откр модалка, пошел запрос за за автором, и потом за цитатой
+  const callbackQuote = (data: AuthorAndQuote) => {
+    setConcateText(`${data.authorName}: ${data.quote}`)
   }
 
   useEffect(() => {
@@ -37,10 +43,10 @@ export const ProfilePage = () => {
         </div>
         {isOpenModal &&
           <Modal open={isOpenModal}>
-            <ModalContent onClose={() => setIsOpenModal(false)} />
+            <ModalContent onClose={() => setIsOpenModal(false)} callbackQuote={callbackQuote} />
           </Modal>}
       </div>
-      <div className={styles.textQuote}> text</div>
+      <div className={styles.textQuote}>{concateText}</div>
     </div>
   )
 }
