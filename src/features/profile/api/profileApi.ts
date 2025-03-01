@@ -1,5 +1,5 @@
 import type { Token } from "@/features/auth/api/authApi.types"
-import { Profile } from "./profileApi.types";
+import type { Profile } from "./profileApi.types";
 
 
 export const profileApi = {

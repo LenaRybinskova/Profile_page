@@ -55,7 +55,10 @@ export const getAuthorTC = (data:any) => (dispatch: any) => {
         const authorId = res.data.authorId
         const authorName = res.data.name
 
-        return quoteApi.getQuote({token:data.token, authorId })
+        const quoteController = new AbortController()
+        const quoteSignal = quoteController.signal
+
+        return quoteApi.getQuote({token:data.token, authorId, quoteSignal })
 
           .then((res) => {
             if (res.success) {

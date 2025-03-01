@@ -1,24 +1,25 @@
-import { Author, Quote, QuoteArgs } from "../api/quoteApi.types"
-import { BaseResponse } from "../../auth/api/authApi.types"
+import type { Author, Quote } from "../api/quoteApi.types"
+import type { BaseResponse } from "../../auth/api/authApi.types"
+import { getRandomElement } from "../lib/generator"
+import { authorsData, DB } from "../api/DB"
 
 
 // TODO: reject протипизирвать
 export const quoteApi = {
-  getQuote: (data: any):Promise<BaseResponse<Quote>> => {
-
+  getQuote: (data: any): Promise<BaseResponse<Quote>> => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (data.signal.aborted) {
-          return reject(new DOMException('Operation aborted', 'AbortError'));
+
+        const authorQuotes = DB.filter((quote) => quote.authorId === data.authorId)
+        const randomQuote = getRandomElement(authorQuotes)
+
+        if (data.quoteSignal.aborted) {
+          return reject(new DOMException("Operation aborted", "AbortError"))
         }
         if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
           resolve({
             success: true,
-            data: {
-              quoteId: 1,
-              authorId: 1,
-              quote: "A day without laughter is a day wasted."
-            }
+            data: randomQuote
           })
         } else {
           reject(new Error("Invalid token"))
@@ -27,25 +28,22 @@ export const quoteApi = {
     })
   },
 
-  getAuthor: (data:any):Promise<BaseResponse<Author>> => {
+  getAuthor: (data: any): Promise<BaseResponse<Author>> => {
 
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
+        const randomAuthor = getRandomElement(authorsData)
+
         if (data.signal.aborted) {
-          console.log("сигнал сработал")
-          return reject(new DOMException('Operation aborted', 'AbortError'));
+          return reject(new DOMException("Operation aborted", "AbortError"))
         }
 
         if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
           resolve({
             success: true,
-            data: {
-              authorId: 1,
-              name: "Charlie Chaplin"
-            }
+            data: randomAuthor
           })
-        }
-        else{
+        } else {
           reject(new Error("Invalid token"))
         }
       }, 5000)

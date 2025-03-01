@@ -3,7 +3,7 @@ import styles from "./ModalContant.module.scss"
 import { useEffect } from "react"
 import { getAuthorTC } from "../model/quotesReducer"
 import { useAppDispatch, useAppSelector } from "../../../app/store"
-import { AuthorAndQuote } from "@/features/profile/api/profileApi.types"
+import type { AuthorAndQuote } from "../../profile/api/profileApi.types"
 
 type Props = {
   onClose?: () => void
@@ -11,6 +11,7 @@ type Props = {
 }
 
 export const ModalContent = ({ onClose, callbackQuote }: Props) => {
+
   const controller = new AbortController();
   const signal = controller.signal;
 
@@ -34,7 +35,6 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
 
 
   const handleCancel = () => {
-    // отмена запросов и закрыть модалку
     controller.abort();
     if (onClose) {
       onClose()
