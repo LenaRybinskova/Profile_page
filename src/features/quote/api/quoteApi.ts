@@ -4,9 +4,13 @@ import { BaseResponse } from "../../auth/api/authApi.types"
 
 // TODO: reject протипизирвать
 export const quoteApi = {
-  getQuote: (data: QuoteArgs):Promise<BaseResponse<Quote>> => {
+  getQuote: (data: any):Promise<BaseResponse<Quote>> => {
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        if (data.signal.aborted) {
+          return reject(new DOMException('Operation aborted', 'AbortError'));
+        }
         if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
           resolve({
             success: true,
@@ -23,10 +27,16 @@ export const quoteApi = {
     })
   },
 
-  getAuthor: (token: string):Promise<BaseResponse<Author>> => {
+  getAuthor: (data:any):Promise<BaseResponse<Author>> => {
+
     return new Promise((resolve,reject) => {
       setTimeout(() => {
-        if (token === "fb566635a66295da0c8ad3f467c32dcf") {
+        if (data.signal.aborted) {
+          console.log("сигнал сработал")
+          return reject(new DOMException('Operation aborted', 'AbortError'));
+        }
+
+        if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
           resolve({
             success: true,
             data: {

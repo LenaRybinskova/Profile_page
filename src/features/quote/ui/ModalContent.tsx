@@ -11,6 +11,8 @@ type Props = {
 }
 
 export const ModalContent = ({ onClose, callbackQuote }: Props) => {
+  const controller = new AbortController();
+  const signal = controller.signal;
 
   const dispatch = useAppDispatch()
   const token = useAppSelector<string>((state) => state.auth.token)
@@ -18,7 +20,8 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
   const quote = useAppSelector<string>((state) => state.quotes.quote)
 
   useEffect(() => {
-    dispatch(getAuthorTC(token)).then((res) => {
+    const data={token, signal}
+    dispatch(getAuthorTC(data)).then((res) => {
         if (onClose) {
           onClose()
         }
@@ -32,6 +35,7 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
 
   const handleCancel = () => {
     // отмена запросов и закрыть модалку
+    controller.abort();
     if (onClose) {
       onClose()
     }

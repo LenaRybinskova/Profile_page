@@ -45,7 +45,36 @@ export type SetQuoteAC = ReturnType<typeof setQuoteAC>
 
 export type QuoteActions = SetAuthorAC | SetQuoteAC
 
-export const getAuthorTC = (token: string) => (dispatch: any) => {
+export const getAuthorTC = (data:any) => (dispatch: any) => {
+
+  return quoteApi.getAuthor(data)
+    .then((res) => {
+      if (res.success) {
+        dispatch(setAuthorAC(res.data))
+
+        const authorId = res.data.authorId
+        const authorName = res.data.name
+
+        return quoteApi.getQuote({token:data.token, authorId })
+
+          .then((res) => {
+            if (res.success) {
+              dispatch(setQuoteAC(res.data))
+              const AuthorAndQuote: AuthorAndQuote = {
+                authorName,
+                quote: res.data.quote
+              }
+              return AuthorAndQuote
+            }
+          })
+      }
+    })
+    .catch(() => {
+      throw new Error("Failed to fetch info")
+    })
+}
+
+/*export const getAuthorTC = (token: string) => (dispatch: any) => {
 
   return quoteApi.getAuthor(token)
     .then((res) => {
@@ -72,29 +101,5 @@ export const getAuthorTC = (token: string) => (dispatch: any) => {
     .catch(() => {
       throw new Error("Failed to fetch info")
     })
-}
-
-/*export const getAuthorTC = (token: string) => (dispatch: any) => {
-
-  return quoteApi.getAuthor(token)
-    .then((res) => {
-      if (res.success) {
-        dispatch(setAuthorAC(res.data))
-        const authorId = res.data.authorId
-        return quoteApi.getQuote({ token, authorId })
-      } else {
-        throw new Error("Failed token")
-      }
-    })
-    .then(res => {
-        if (res.success) {
-          dispatch(setQuoteAC(res.data))
-          console.log("санка вернула:", res.data)
-          return res.data
-        }
-      }
-    )
-    .catch(() => {
-      throw new Error("Failed to fetch info")
-    })
 }*/
+
