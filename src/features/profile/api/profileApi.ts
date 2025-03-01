@@ -2,9 +2,9 @@ import type { Token } from "@/features/auth/api/authApi.types"
 
 
 export const profileApi = {
-  getProfile: (data: Token) => {
+  getProfile: (token: string) => {
     new Promise((resolve, reject) => {
-      if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
+      if (token === "fb566635a66295da0c8ad3f467c32dcf") {
         resolve({
           success: true,
           data: {

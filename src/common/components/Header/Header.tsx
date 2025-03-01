@@ -1,11 +1,13 @@
 import styles from "./Header.module.scss"
 import { LinkCustom } from "../LinkCustom/index"
 import { useAppSelector } from "../../../app/store"
+import { useEffect } from "react"
 
 
 export const Header = () => {
 
   const isAuth = useAppSelector<string>((state) => state.auth.email)
+
 
   return (
     <header className={styles.containerHeader}>
