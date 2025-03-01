@@ -1,7 +1,7 @@
 import { authApi } from "../api/authApi"
-import type { Login } from "../api/authApi.types"
+import { BaseResponse, Login } from "../api/authApi.types"
 import { profileApi } from "../../profile/api/profileApi"
-import { Profile } from "@/features/profile/api/profileApi.types"
+import { Profile } from "../../profile/api/profileApi.types"
 
 
 const initialState = {
@@ -20,7 +20,7 @@ type AuthState = typeof initialState
 const SET_AUTH_DATA = "SET-AUTH-DATA"
 const SET_AVATAR = "SET_AVATAR"
 const SET_TOKEN = "SET-TOKEN"
-
+const SET_PROFILE = "SET-PROFILE"
 
 // TODO: any типизация
 export const authReducer = (state: AuthState = initialState, action: any): AuthState => {
@@ -31,6 +31,8 @@ export const authReducer = (state: AuthState = initialState, action: any): AuthS
       return { ...state, avatar: action.payload }
     case SET_TOKEN:
       return { ...state, token: action.payload }
+    case SET_PROFILE:
+      return { ...state, profile: action.payload }
     default:
       return state
   }
@@ -58,7 +60,7 @@ export const setTokenAC = (token: string) => {
 
 export const setProfileAC = (profile: Profile) => {
   return {
-    type: SET_TOKEN,
+    type:SET_PROFILE,
     payload: profile
   } as const
 }
@@ -78,15 +80,16 @@ export const loginTC = (data: Login) => (dispatch: any) => {
         dispatch(setAvatarAC("/assets/images/avatar.svg"))
         dispatch(setTokenAC(res.data.token))
         return profileApi.getProfile(res.data.token)
+      } else {
+        throw new Error("Login failed")
       }
     })
-    .then(res => {
-      console.log("ЗЕН2",res)
-
-      /* dispatch(setProfileAC(profile))*/
-
-
-    })
+    .then((res: BaseResponse<Profile>) => {
+        if (res && res.data) {
+          dispatch(setProfileAC(res.data))
+        }
+      }
+    )
     .catch(() => {
       throw new Error("Failed to fetch info")
     })

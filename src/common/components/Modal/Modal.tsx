@@ -27,13 +27,25 @@ export const Modal = ({ onClose, open, children }: Props) => {
   )
 }
 
-export const Request = () => {
+type Props2={
+  onClose?: () => void
+}
+
+export const ModalContent = ({onClose}:Props2) => {
+
+
+  const handleCancel=()=>{
+    // отмена запросов и закрыть модалку
+    if (onClose) {
+      onClose()
+    }
+  }
   return (
     <div >
       <span>Requesting the quote</span>
       <span>Step 1</span>
       <span>Step 2</span>
-      <Button>Cancel</Button>
+      <Button onClick={handleCancel}>Cancel</Button>
     </div>
   )
 }

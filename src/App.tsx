@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Header } from "./common/components/Header/Header"
 import {PublicPage} from "./features/publicPage/ui/PublicPage"
 import { SignIn } from "../src/features/auth/ui/SignIn"
-import { Profile } from "../src/features/profile/ui/index"
+import { ProfilePage } from "../src/features/profile/ui/index"
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<PublicPage/>} />
           <Route path="/login" element={<SignIn/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<ProfilePage/>} />
         </Routes>
       </main>
 
