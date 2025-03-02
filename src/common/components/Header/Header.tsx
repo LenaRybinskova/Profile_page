@@ -1,8 +1,8 @@
 import styles from "./Header.module.scss"
-import { useAppDispatch, useAppSelector } from "../../../app/store"
-import { logoutTC } from "../../../features/auth/model/authReducer"
-import { Button } from "../Button/Button"
-import { resetAuthorQuoteAC } from "../../../features/quote/model/quotesReducer"
+import { useAppDispatch, useAppSelector } from "@/app/store"
+import { logoutTC } from "@/features/auth/model/authReducer"
+import { Button } from "../Button/index"
+import { resetAuthorQuoteAC } from "@/features/quote/model/quotesReducer"
 import { Link, useNavigate } from "react-router-dom"
 
 

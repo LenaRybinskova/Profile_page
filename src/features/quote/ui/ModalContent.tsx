@@ -1,10 +1,10 @@
-import { Button } from "../../../common/components/Button/Button"
+import { Button } from "@/common/components/Button"
 import styles from "./ModalContant.module.scss"
 import { useEffect, useRef } from "react"
-import { getAuthorTC } from "../model/quotesReducer"
-import { useAppDispatch, useAppSelector } from "../../../app/store"
-import type { AuthorAndQuote } from "../../profile/api/profileApi.types"
-import type { DataToken } from "../api/quoteApi.types"
+import { getAuthorTC } from "@/features/quote/model/quotesReducer"
+import { useAppDispatch, useAppSelector } from "@/app/store"
+import type { AuthorAndQuote } from "@/features/profile/api/profileApi.types"
+import type { DataToken } from "@/features/quote/api/quoteApi.types"
 
 
 type Props = {

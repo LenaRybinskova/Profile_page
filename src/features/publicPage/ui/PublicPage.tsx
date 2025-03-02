@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { getAboutUsInfo } from "../model/publicReducer"
-import { useAppDispatch, useAppSelector } from "../../../app/store"
+import { getAboutUsInfo } from "@/features/publicPage/model/publicReducer"
+import { useAppDispatch, useAppSelector } from "@/app/store"
 
 
 export const PublicPage = () => {

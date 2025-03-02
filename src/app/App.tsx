@@ -1,9 +1,9 @@
 import "../app/styles/stylesGlobal.css"
 import { HashRouter, Route, Routes } from "react-router-dom"
-import { Header } from "../common/components/Header/Header"
-import { PublicPage } from "../features/publicPage/ui/PublicPage"
-import { SignIn } from "../features/auth/ui/SignIn"
-import { ProfilePage } from "../features/profile/ui/Profile"
+import { Header } from "@/common/components/Header"
+import { PublicPage } from "@/features/publicPage/ui/PublicPage"
+import { SignIn } from "@/features/auth/ui"
+import { ProfilePage } from "@/features/profile/ui"
 
 const App = () => {
   return (

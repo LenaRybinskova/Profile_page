@@ -1,5 +1,5 @@
 import styles from "./Modal.module.scss"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 import { createPortal } from "react-dom"
 
 

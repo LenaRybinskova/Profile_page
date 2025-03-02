@@ -1,12 +1,12 @@
-import { Button } from "../../../common/components/Button/Button"
+import { Button } from "@/common/components/Button"
 import { useEffect, useState } from "react"
-import { Modal } from "../../../common/components/Modal/Modal"
-import { useAppDispatch, useAppSelector } from "../../../app/store"
+import { Modal } from "@/common/components/Modal"
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { useNavigate } from "react-router-dom"
 import styles from "./Profile.module.scss"
-import type { AuthorAndQuote, Profile } from "../../profile/api/profileApi.types"
-import { ModalContent } from "../../quote/ui/ModalContent"
-import { resetAuthorQuoteAC } from "../../quote/model/quotesReducer"
+import type { AuthorAndQuote, Profile } from "@/features/profile/api/profileApi.types"
+import { ModalContent } from "@/features/quote/ui"
+import { resetAuthorQuoteAC } from "@/features/quote/model/quotesReducer"
 
 
 export const ProfilePage = () => {
