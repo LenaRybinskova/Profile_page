@@ -1,4 +1,4 @@
-import type { Login, Token } from "./authApi.types"
+import type { Login } from "./authApi.types"
 
 export const authApi = {
   login: (data: Login) =>
@@ -16,6 +16,6 @@ export const authApi = {
         })
       }
     })
-  },
+  }
 }
 

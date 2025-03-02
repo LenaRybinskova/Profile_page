@@ -1,5 +1,5 @@
 import { publicApi } from "../api/publicApi"
-import { Dispatch } from "react"
+import type { Dispatch } from "react"
 
 
 const initialState = {

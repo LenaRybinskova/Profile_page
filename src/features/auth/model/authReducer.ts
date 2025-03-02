@@ -1,7 +1,7 @@
-import { authApi } from "../api/authApi"
-import type { BaseResponse, Login } from "../api/authApi.types"
-import { profileApi } from "../../profile/api/profileApi"
-import type { Profile } from "../../profile/api/profileApi.types"
+import { authApi } from "@/features/auth/api/authApi"
+import type { BaseResponse, Login } from "@/features/auth/api/authApi.types"
+import { profileApi } from "@/features/profile/api/profileApi"
+import type { Profile } from "@/features/profile/api/profileApi.types"
 import type { Dispatch } from "react"
 
 

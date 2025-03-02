@@ -1,17 +1,17 @@
-import { Button } from "../../../common/components/Button/Button"
+import { Button } from "@/common/components/Button"
 import { useEffect, useState } from "react"
-import { Modal } from "../../../common/components/Modal/Modal"
-import { useAppDispatch, useAppSelector } from "../../../app/store"
+import { Modal } from "@/common/components/Modal"
+import { useAppDispatch, useAppSelector } from "@/app/store"
 import { useNavigate } from "react-router-dom"
 import styles from "./Profile.module.scss"
-import type { AuthorAndQuote, Profile } from "../../profile/api/profileApi.types"
-import { ModalContent } from "../../quote/ui/ModalContent"
-import { resetAuthorQuoteAC } from "../../quote/model/quotesReducer"
+import type { AuthorAndQuote, Profile } from "@/features/profile/api/profileApi.types"
+import { ModalContent } from "@/features/quote/ui"
+import { resetAuthorQuoteAC } from "@/features/quote/model/quotesReducer"
 
 
 export const ProfilePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
-  const [concateText, setConcateText] = useState<string>("")
+  const [concatText, setConcatText] = useState<string>("")
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -26,7 +26,7 @@ export const ProfilePage = () => {
   }
 
   const callbackQuote = (data: AuthorAndQuote) => {
-    setConcateText(`${data.authorName}: ${data.quote}`)
+    setConcatText(`${data.authorName}: ${data.quote}`)
   }
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const ProfilePage = () => {
             <ModalContent onClose={() => setIsOpenModal(false)} callbackQuote={callbackQuote} />
           </Modal>}
       </div>
-      <div className={styles.textQuote}>{concateText}</div>
+      <div className={styles.textQuote}>{concatText}</div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-.rootContainer{
+.rootContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -9,7 +9,7 @@
     background-color: #ffffff;
 }
 
-.app-container{
+.app-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -17,6 +17,6 @@
     width: 1200px
 }
 
-.main-container{
+.main-container {
     width: 100%;
 }

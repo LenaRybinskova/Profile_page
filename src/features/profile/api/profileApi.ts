@@ -16,6 +16,6 @@ export const profileApi = {
         reject(new Error("Invalid token"))
       }
     })
-  },
+  }
 
 }

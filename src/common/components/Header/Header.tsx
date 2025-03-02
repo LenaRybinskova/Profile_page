@@ -1,8 +1,8 @@
 import styles from "./Header.module.scss"
-import { useAppDispatch, useAppSelector } from "../../../app/store"
-import { logoutTC } from "../../../features/auth/model/authReducer"
-import { Button } from "../Button/Button"
-import { resetAuthorQuoteAC } from "../../../features/quote/model/quotesReducer"
+import { useAppDispatch, useAppSelector } from "@/app/store"
+import { logoutTC } from "@/features/auth/model/authReducer"
+import { Button } from "../Button/index"
+import { resetAuthorQuoteAC } from "@/features/quote/model/quotesReducer"
 import { Link, useNavigate } from "react-router-dom"
 
 
@@ -10,7 +10,7 @@ export const Header = () => {
   const isAuth = useAppSelector<string>((state) => state.auth.email)
   const token = useAppSelector<string>((state) => state.auth.token)
   const dispatch = useAppDispatch()
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   const handleSignOut = () => {
     dispatch(logoutTC(token)).then(() => {
