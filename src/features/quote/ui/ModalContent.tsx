@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { getAuthorTC } from "../model/quotesReducer"
 import { useAppDispatch, useAppSelector } from "../../../app/store"
 import type { AuthorAndQuote } from "../../profile/api/profileApi.types"
-import { DataToken } from "../api/quoteApi.types"
+import type { DataToken } from "../api/quoteApi.types"
 
 
 type Props = {
