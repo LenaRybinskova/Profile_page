@@ -7,7 +7,6 @@ import { resetAuthorQuoteAC } from "../../../features/quote/model/quotesReducer"
 
 
 export const Header = () => {
-
   const isAuth = useAppSelector<string>((state) => state.auth.email)
   const token = useAppSelector<string>((state) => state.auth.token)
   const dispatch = useAppDispatch()
