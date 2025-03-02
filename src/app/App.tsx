@@ -1,14 +1,14 @@
 /*import "./App.css"*/
-import "./app/styles/stylesGlobal.css"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Header } from "./common/components/Header/Header"
-import {PublicPage} from "./features/publicPage/ui/PublicPage"
-import { SignIn } from "../src/features/auth/ui/SignIn"
-import { ProfilePage } from "../src/features/profile/ui/index"
+import "../app/styles/stylesGlobal.css"
+import { HashRouter, Route, Routes } from "react-router-dom"
+import { Header } from "../common/components/Header/Header"
+import { PublicPage } from "../features/publicPage/ui/PublicPage"
+import { SignIn } from "../features/auth/ui/SignIn"
+import { ProfilePage } from "../features/profile/ui/Profile"
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter basename={import.meta.env.VITE_PUBLIC_URL}>
       <div className="rootContainer">
         <div className="app-container">
           <Header />
@@ -19,13 +19,9 @@ const App = () => {
               <Route path="/profile" element={<ProfilePage/>} />
             </Routes>
           </main>
-
-
         </div>
-
       </div>
-
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
