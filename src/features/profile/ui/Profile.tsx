@@ -1,17 +1,19 @@
 import { Button } from "../../../common/components/Button/Button"
 import { useEffect, useState } from "react"
 import { Modal } from "../../../common/components/Modal/Modal"
-import { useAppSelector } from "../../../app/store"
+import { useAppDispatch, useAppSelector } from "../../../app/store"
 import { useNavigate } from "react-router-dom"
 import styles from "./Profile.module.scss"
-import { AuthorAndQuote, Profile } from "../../profile/api/profileApi.types"
+import type { AuthorAndQuote, Profile } from "../../profile/api/profileApi.types"
 import { ModalContent } from "../../quote/ui/ModalContent"
+import { resetAuthorQuoteAC } from "../../quote/model/quotesReducer"
 
 
 export const ProfilePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [concateText, setConcateText] = useState<string>("")
   const navigate = useNavigate()
+  const dispatch= useAppDispatch()
 
 
   const isAuth = useAppSelector<string>((state) => state.auth.email)
@@ -20,6 +22,7 @@ export const ProfilePage = () => {
 
 
   const handleUpdateQuote = () => {
+    dispatch(resetAuthorQuoteAC())
     setIsOpenModal(true)
   }
 

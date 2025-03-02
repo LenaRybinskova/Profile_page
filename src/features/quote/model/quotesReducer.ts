@@ -13,6 +13,7 @@ type State = typeof initialState
 
 const SET_AUTHOR = "SET-AUTHOR"
 const SET_QUOTE = "SET-QUOTE"
+const RESET_AUTHOR_QUOTE = "RESET-AUTHOR-QUOTE"
 
 
 // TODO: any типизация
@@ -22,6 +23,8 @@ export const quotesReducer = (state: State = initialState, action: any): State =
       return { ...state, authorId: action.payload.authorId, name: action.payload.name }
     case SET_QUOTE:
       return { ...state, quote: action.payload.quote }
+    case RESET_AUTHOR_QUOTE:
+      return { ...state, quote: "", authorId: "", name: "" }
     default:
       return state
   }
@@ -39,13 +42,20 @@ export const setQuoteAC = (data: Quote) => {
   } as const
 }
 
+export const resetAuthorQuoteAC = () => {
+  return {
+    type: RESET_AUTHOR_QUOTE
+  } as const
+}
+
 
 export type SetAuthorAC = ReturnType<typeof setAuthorAC>
 export type SetQuoteAC = ReturnType<typeof setQuoteAC>
+export type ResetAuthorQuoteAC = ReturnType<typeof resetAuthorQuoteAC>
 
-export type QuoteActions = SetAuthorAC | SetQuoteAC
+export type QuoteActions = SetAuthorAC | SetQuoteAC | ResetAuthorQuoteAC
 
-export const getAuthorTC = (data:any) => (dispatch: any) => {
+export const getAuthorTC = (data: any) => (dispatch: any) => {
 
   return quoteApi.getAuthor(data)
     .then((res) => {
@@ -55,10 +65,10 @@ export const getAuthorTC = (data:any) => (dispatch: any) => {
         const authorId = res.data.authorId
         const authorName = res.data.name
 
-        const quoteController = new AbortController()
-        const quoteSignal = quoteController.signal
+/*        const quoteController = new AbortController()
+        const quoteSignal = quoteController.signal*/
 
-        return quoteApi.getQuote({token:data.token, authorId, quoteSignal })
+        return quoteApi.getQuote({ token: data.token, authorId, quoteSignal:data.signal })
 
           .then((res) => {
             if (res.success) {
