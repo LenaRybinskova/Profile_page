@@ -1,14 +1,14 @@
-import type { Token } from "@/features/auth/api/authApi.types"
+import type { Profile } from "./profileApi.types"
 
 
 export const profileApi = {
-  getProfile: (data: Token) => {
-    new Promise((resolve, reject) => {
-      if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
+  getProfile: (token: string): Promise<{ success: boolean; data: Profile }> => {
+    return new Promise((resolve, reject) => {
+      if (token === "fb566635a66295da0c8ad3f467c32dcf") {
         resolve({
           success: true,
           data: {
-            fullname: "Aleksei K",
+            fullname: "Alexey K",
             email: "aleksei@example.com"
           }
         })
@@ -16,19 +16,6 @@ export const profileApi = {
         reject(new Error("Invalid token"))
       }
     })
-  },
-
-  getAuthor: (data: Token) => {
-    return new Promise((resolve) => {
-      if (data.token === "fb566635a66295da0c8ad3f467c32dcf") {
-        resolve({
-          success: true,
-          data: {
-            authorId: 1,
-            name: "Charlie Chaplin"
-          }
-        })
-      }
-    })
   }
+
 }

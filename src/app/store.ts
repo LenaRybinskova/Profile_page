@@ -1,35 +1,34 @@
-import type { Action, ThunkAction } from "@reduxjs/toolkit"
-import { combineSlices, configureStore } from "@reduxjs/toolkit"
-import { setupListeners } from "@reduxjs/toolkit/query"
-import { authReducer } from "../../src/features/auth/model/authSlice"
+import type { ThunkDispatch } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
+import type { AboutUsActions} from "@/features/publicPage/model/publicReducer";
+import { publicReducer } from "@/features/publicPage/model/publicReducer"
+import type { TypedUseSelectorHook } from "react-redux"
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+import { useDispatch, useSelector } from "react-redux"
+import type { AuthActions} from "@/features/auth/model/authReducer";
+import { authReducer } from "@/features/auth/model/authReducer"
+import type { QuoteActions} from "@/features/quote/model/quotesReducer";
+import { quotesReducer } from "@/features/quote/model/quotesReducer"
 
 
-const rootReducer = combineSlices({auth:authReducer})
+export const store = configureStore({
+  reducer: {
+    public: publicReducer,
+    auth: authReducer,
+    quotes: quotesReducer
+  }
+})
 
-export type RootState = ReturnType<typeof rootReducer>
+export type AppRootStateType = ReturnType<typeof store.getState>
 
-export const makeStore = (preloadedState?: Partial<RootState>) => {
-  const store = configureStore({
-    reducer: rootReducer,
+export type AppRootActions = AboutUsActions | QuoteActions | AuthActions
 
-    middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware();
-    },
-    preloadedState,
-  })
+export type AppThunkDispatch = ThunkDispatch<AppRootStateType, any, AppRootActions>
 
-  setupListeners(store.dispatch)
-  return store
-}
+export const useAppDispatch = () => useDispatch<AppThunkDispatch>()
+export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 
-export const store = makeStore()
 
-export type AppStore = typeof store
+// @ts-ignore
+window.store = store
 
-export type AppDispatch = AppStore["dispatch"]
-export type AppThunk<ThunkReturnType = void> = ThunkAction<
-  ThunkReturnType,
-  RootState,
-  unknown,
-  Action
->

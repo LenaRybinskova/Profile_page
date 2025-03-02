@@ -1,0 +1,36 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--font-size-m);
+
+
+  p {
+    line-height: 1;
+    margin: 0;
+  }
+}
+
+.textQuote {
+
+}
