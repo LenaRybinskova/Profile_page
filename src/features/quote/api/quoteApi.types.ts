@@ -14,3 +14,8 @@ export type Author = {
   name: string
 }
 
+export type DataToken = {
+  token: string
+  signal: AbortSignal
+}
+

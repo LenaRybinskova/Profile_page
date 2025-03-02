@@ -1,7 +1,7 @@
 import { quoteApi } from "../api/quoteApi"
-import { Author, Quote } from "@/features/quote/api/quoteApi.types"
-import { AuthorAndQuote } from "@/features/profile/api/profileApi.types"
-import { resetAllDataAC } from "@/features/auth/model/authReducer"
+import type { Author, Quote } from "@/features/quote/api/quoteApi.types"
+import type { AuthorAndQuote } from "@/features/profile/api/profileApi.types"
+import type { Dispatch } from "react"
 
 
 const initialState = {
@@ -17,7 +17,6 @@ const SET_QUOTE = "SET-QUOTE"
 const RESET_AUTHOR_QUOTE = "RESET-AUTHOR-QUOTE"
 
 
-// TODO: any типизация
 export const quotesReducer = (state: State = initialState, action: any): State => {
   switch (action.type) {
     case SET_AUTHOR:
@@ -56,7 +55,7 @@ export type ResetAuthorQuoteAC = ReturnType<typeof resetAuthorQuoteAC>
 
 export type QuoteActions = SetAuthorAC | SetQuoteAC | ResetAuthorQuoteAC
 
-export const getAuthorTC = (data: any) => (dispatch: any) => {
+export const getAuthorTC = (data: any) => async (dispatch: Dispatch<QuoteActions>) => {
 
   return quoteApi.getAuthor(data)
     .then((res) => {

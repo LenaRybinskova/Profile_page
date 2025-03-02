@@ -1,24 +1,25 @@
 import { publicApi } from "../api/publicApi"
+import { Dispatch } from "react"
 
 
 const initialState = {
-  aboutUs: "",
-};
+  aboutUs: ""
+}
 
-type PublicState = {aboutUs: string}
+type PublicState = { aboutUs: string }
 
-const GET_ABOUT_US_INFO = "GET-ABOUT-US-INFO";
+const GET_ABOUT_US_INFO = "GET-ABOUT-US-INFO"
 
 
 // TODO: action:any нормально протипиз
-export const publicReducer = (state:PublicState = initialState, action:any):PublicState => {
+export const publicReducer = (state: PublicState = initialState, action: any): PublicState => {
   switch (action.type) {
     case GET_ABOUT_US_INFO:
-      return { ...state, aboutUs: action.payload };
+      return { ...state, aboutUs: action.payload }
     default:
-      return state;
+      return state
   }
-};
+}
 export const getInfoAC = (aboutUs: string) => {
   return {
     type: GET_ABOUT_US_INFO,
@@ -26,10 +27,10 @@ export const getInfoAC = (aboutUs: string) => {
   } as const
 }
 
-export type AboutUsActions = ReturnType< typeof getInfoAC>
+export type AboutUsActions = ReturnType<typeof getInfoAC>
 
 
-export const getAboutUsInfo = () => (dispatch: any) => {
+export const getAboutUsInfo = () => (dispatch: Dispatch<AboutUsActions>) => {
   publicApi.getInfo()
     .then((res) => {
         if (res.success) {

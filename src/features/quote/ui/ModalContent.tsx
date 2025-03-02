@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react"
 import { getAuthorTC } from "../model/quotesReducer"
 import { useAppDispatch, useAppSelector } from "../../../app/store"
 import type { AuthorAndQuote } from "../../profile/api/profileApi.types"
+import { DataToken } from "../api/quoteApi.types"
+
 
 type Props = {
   onClose?: () => void
@@ -20,11 +22,14 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
   useEffect(() => {
     controller.current = new AbortController()
     const signal = controller.current.signal
-    console.log("юзЭффект signal", signal)
-    const data = { token, signal }
+    const data: DataToken = { token, signal }
     dispatch(getAuthorTC(data)).then((res) => {
-        if (onClose) {onClose()}
-        if (res) {callbackQuote(res)}
+        if (onClose) {
+          onClose()
+        }
+        if (res) {
+          callbackQuote(res)
+        }
       }
     )
 

@@ -1,7 +1,8 @@
 import { authApi } from "../api/authApi"
-import { BaseResponse, Login } from "../api/authApi.types"
+import type { BaseResponse, Login } from "../api/authApi.types"
 import { profileApi } from "../../profile/api/profileApi"
-import { Profile } from "../../profile/api/profileApi.types"
+import type { Profile } from "../../profile/api/profileApi.types"
+import type { Dispatch } from "react"
 
 
 const initialState = {
@@ -23,7 +24,6 @@ const SET_TOKEN = "SET-TOKEN"
 const SET_PROFILE = "SET-PROFILE"
 const RESET_ALL_DATA = "RESET-ALL-DATA"
 
-// TODO: any типизация
 export const authReducer = (state: AuthState = initialState, action: any): AuthState => {
   switch (action.type) {
     case SET_AUTH_DATA:
@@ -84,7 +84,7 @@ export type ResetAllDataAC = ReturnType<typeof resetAllDataAC>
 export type AuthActions = SetAuthAC | SetAvatarAC | SetTokenAC | SetProfileAC | ResetAllDataAC
 
 
-export const loginTC = (data: Login) => (dispatch: any) => {
+export const loginTC = (data: Login) => async (dispatch: Dispatch<AuthActions>) => {
   return authApi.login(data)
     .then((res) => {
       if (res.success) {
@@ -107,11 +107,11 @@ export const loginTC = (data: Login) => (dispatch: any) => {
     })
 }
 
-export const logoutTC = (token: string) => (dispatch: any) => {
+export const logoutTC = (token: string) => async (dispatch: Dispatch<AuthActions>) => {
   return authApi.logout(token)
     .then(() => {
-    dispatch(resetAllDataAC())
-  })
+      dispatch(resetAllDataAC())
+    })
     .catch(() => {
       throw new Error("Failed to fetch info")
     })
