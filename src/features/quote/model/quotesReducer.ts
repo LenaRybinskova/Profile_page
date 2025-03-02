@@ -1,7 +1,7 @@
 import { quoteApi } from "../api/quoteApi"
 import { Author, Quote } from "@/features/quote/api/quoteApi.types"
 import { AuthorAndQuote } from "@/features/profile/api/profileApi.types"
-import { resetAllDataAC } from "@/features/auth/model/authSlice"
+import { resetAllDataAC } from "@/features/auth/model/authReducer"
 
 
 const initialState = {
@@ -80,7 +80,5 @@ export const getAuthorTC = (data: any) => (dispatch: any) => {
           })
       }
     })
-    .catch(() => {
-      throw new Error("Failed to fetch info")
-    })
+
 }

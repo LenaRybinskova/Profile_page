@@ -1,15 +1,27 @@
-.button {
+.button,
+.link {
   display: inline-block;
   width: auto;
   padding: 6px 12px;
   border-radius: 4px;
+  font-size: var(--font-size-s);
   border: none;
-  background-color: #0072db;
-  color: #dddddd;
-  font-weight: 500;
-  font-size: 16px;
-
   text-align: center;
   cursor: pointer;
   max-height: 70px;
+  box-sizing: border-box;
+}
+
+.button {
+  background-color: var(--color-background-secondary);
+  color: var(--color-background-primary);
+}
+
+.link {
+  line-height: 1;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border: 1px solid var(--color-text-secondary) ;
+  background-color: transparent;
+
 }

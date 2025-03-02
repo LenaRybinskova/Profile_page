@@ -8,7 +8,7 @@ export const profileApi = {
         resolve({
           success: true,
           data: {
-            fullname: "Aleksei K",
+            fullname: "Alexey K",
             email: "aleksei@example.com"
           }
         })

@@ -1,9 +1,9 @@
-import { SubmitHandler, useForm } from "react-hook-form"
+import  { SubmitHandler, useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { Input } from "../../../common/components/Input/Input"
 import { Button } from "../../../common/components/Button/index"
 import styles from "./SignIn.module.scss"
-import { loginTC } from "../model/authSlice"
+import { loginTC } from "../model/authReducer"
 import { useAppDispatch } from "../../../app/store"
 
 type FormValue = {
@@ -11,10 +11,9 @@ type FormValue = {
   password: string
 }
 
-// TODO: валидация
 
 export const SignIn = () => {
-  const { register, handleSubmit, control, formState: { errors, isValid } } = useForm<FormValue>({ mode: "onBlur" })
+  const { register, handleSubmit, control } = useForm<FormValue>({ mode: "onBlur" })
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -25,21 +24,23 @@ export const SignIn = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.loginContainer}>
-      <Input
-        name="email"
-        label="Email address"
-        placeholder="Enter email"
-        control={control}
-      />
-      <Input
-        name="password"
-        label="Password"
-        placeholder="Password"
-        control={control}
-        variant="password"
-      />
-      <Button type="submit">Submit</Button>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+      <div className={styles.formContent}>
+        <Input
+          label="Email address"
+          placeholder="Enter email"
+          control={control}
+          {...register("email", { required: "Email is required" })}
+        />
+        <Input
+          label="Password"
+          placeholder="Password"
+          control={control}
+          variant="password"
+          {...register("password", { required: "Email is required" })}
+        />
+        <Button type="submit">Submit</Button>
+      </div>
     </form>
   )
 }
