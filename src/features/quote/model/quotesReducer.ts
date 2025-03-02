@@ -80,7 +80,5 @@ export const getAuthorTC = (data: any) => (dispatch: any) => {
           })
       }
     })
-    .catch(() => {
-      throw new Error("Failed to fetch info")
-    })
+
 }

@@ -9,14 +9,21 @@ import { ProfilePage } from "../src/features/profile/ui/index"
 const App = () => {
   return (
     <BrowserRouter>
-      <main className="main-container">
-        <Header />
-        <Routes>
-          <Route path="/" element={<PublicPage/>} />
-          <Route path="/login" element={<SignIn/>} />
-          <Route path="/profile" element={<ProfilePage/>} />
-        </Routes>
-      </main>
+      <div className="rootContainer">
+        <div className="app-container">
+          <Header />
+          <main className="main-container">
+            <Routes>
+              <Route path="/" element={<PublicPage/>} />
+              <Route path="/login" element={<SignIn/>} />
+              <Route path="/profile" element={<ProfilePage/>} />
+            </Routes>
+          </main>
+
+
+        </div>
+
+      </div>
 
     </BrowserRouter>
   )

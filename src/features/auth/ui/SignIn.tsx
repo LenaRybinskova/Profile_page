@@ -11,7 +11,6 @@ type FormValue = {
   password: string
 }
 
-// TODO: валидация
 
 export const SignIn = () => {
   const { register, handleSubmit, control } = useForm<FormValue>({ mode: "onBlur" })

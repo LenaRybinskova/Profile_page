@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/store"
 import { logoutTC } from "../../../features/auth/model/authSlice"
 import { Button } from "../Button/Button"
 import { resetAuthorQuoteAC } from "../../../features/quote/model/quotesReducer"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 export const Header = () => {
@@ -23,19 +23,19 @@ export const Header = () => {
     <header className={styles.containerHeader}>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li><Button<"a"> as={"a"} href={"/"} variant={"link"}>About us</Button></li>
+          <li><Button as={Link} to="/" variant="link">About us</Button></li>
 
           {isAuth
             ? (<>
               <li>
-                <Button<"a"> as="a" href="/profile" variant="link">Profile</Button>
+                <Button as={Link} to="/profile" variant="link">Profile</Button>
               </li>
               <li>
                 <Button onClick={handleSignOut} variant="link">Sign out</Button>
               </li>
             </>)
             : (<li>
-                <Button<"a"> as="a" href="/login" variant="link">Sign in</Button>
+                <Button as={Link} to="/login" variant="link">Sign in</Button>
               </li>
             )}
         </ul>

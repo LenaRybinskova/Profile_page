@@ -13,13 +13,12 @@ export const ProfilePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [concateText, setConcateText] = useState<string>("")
   const navigate = useNavigate()
-  const dispatch= useAppDispatch()
-
+  const dispatch = useAppDispatch()
 
   const isAuth = useAppSelector<string>((state) => state.auth.email)
   const avatar = useAppSelector<string>((state) => state.auth.avatar)
   const profile = useAppSelector<Profile>((state) => state.auth.profile)
-
+  const name = profile.fullname.split(" ")
 
   const handleUpdateQuote = () => {
     dispatch(resetAuthorQuoteAC())
@@ -39,9 +38,9 @@ export const ProfilePage = () => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.userInfo}>
-        <img src={avatar} alt={"avatar"} />
-        <div>
-          <div>Welcome,{profile.fullname}!</div>
+        <img src={avatar} alt={"avatar"} className={styles.avatar} />
+        <div className={styles.welcome}>
+          <p>Welcome, {name[0]}!</p>
           <Button onClick={handleUpdateQuote}>Update</Button>
         </div>
         {isOpenModal &&
