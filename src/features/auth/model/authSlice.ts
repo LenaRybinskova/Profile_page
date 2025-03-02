@@ -35,6 +35,7 @@ export const authReducer = (state: AuthState = initialState, action: any): AuthS
     case SET_PROFILE:
       return { ...state, profile: action.payload }
     case RESET_ALL_DATA:
+      console.log("сюда попали для ресета")
       return { ...initialState }
     default:
       return state
