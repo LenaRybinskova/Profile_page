@@ -7,6 +7,7 @@ import { authorsData, DB } from "../api/DB"
 // TODO: reject протипизирвать
 export const quoteApi = {
   getQuote: (data: any): Promise<BaseResponse<Quote>> => {
+    console.log("второй кенсел",data)
     return new Promise((resolve, reject) => {
       setTimeout(() => {
 

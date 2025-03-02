@@ -26,7 +26,7 @@ export const getInfoAC = (aboutUs: string) => {
   } as const
 }
 
-export type GetAboutUsInfo= ReturnType< typeof getInfoAC>
+export type AboutUsActions = ReturnType< typeof getInfoAC>
 
 
 export const getAboutUsInfo = () => (dispatch: any) => {
