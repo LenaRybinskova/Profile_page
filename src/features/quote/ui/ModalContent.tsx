@@ -17,7 +17,7 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
 
   const dispatch = useAppDispatch()
   const token = useAppSelector<string>((state) => state.auth.token)
-  const author = useAppSelector<string>((state) => state.quotes.authorId)
+  const author = useAppSelector<number | null>((state) => state.quotes.authorId)
 
   useEffect(() => {
     controller.current = new AbortController()

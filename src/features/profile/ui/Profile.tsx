@@ -11,7 +11,7 @@ import { resetAuthorQuoteAC } from "../../quote/model/quotesReducer"
 
 export const ProfilePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
-  const [concateText, setConcateText] = useState<string>("")
+  const [concatText, setConcatText] = useState<string>("")
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -26,7 +26,7 @@ export const ProfilePage = () => {
   }
 
   const callbackQuote = (data: AuthorAndQuote) => {
-    setConcateText(`${data.authorName}: ${data.quote}`)
+    setConcatText(`${data.authorName}: ${data.quote}`)
   }
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const ProfilePage = () => {
             <ModalContent onClose={() => setIsOpenModal(false)} callbackQuote={callbackQuote} />
           </Modal>}
       </div>
-      <div className={styles.textQuote}>{concateText}</div>
+      <div className={styles.textQuote}>{concatText}</div>
     </div>
   )
 }

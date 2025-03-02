@@ -1,11 +1,5 @@
-import {
-  authReducer,
-  setAuthAC,
-  setTokenAC,
-  setProfileAC,
-  resetAllDataAC,
-  AuthState
-} from "../authReducer"
+import type { AuthState } from "../authReducer"
+import { authReducer, resetAllDataAC, setAuthAC, setProfileAC, setTokenAC } from "../authReducer"
 
 
 let startState: AuthState

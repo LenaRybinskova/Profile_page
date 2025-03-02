@@ -1,4 +1,5 @@
-import { getInfoAC, publicReducer, PublicState } from "../publicReducer"
+import type { PublicState } from "../publicReducer"
+import { getInfoAC, publicReducer } from "../publicReducer"
 
 let startState: PublicState
 

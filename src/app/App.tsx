@@ -1,4 +1,3 @@
-/*import "./App.css"*/
 import "../app/styles/stylesGlobal.css"
 import { HashRouter, Route, Routes } from "react-router-dom"
 import { Header } from "../common/components/Header/Header"
@@ -14,9 +13,9 @@ const App = () => {
           <Header />
           <main className="main-container">
             <Routes>
-              <Route path="/" element={<PublicPage/>} />
-              <Route path="/login" element={<SignIn/>} />
-              <Route path="/profile" element={<ProfilePage/>} />
+              <Route path="/" element={<PublicPage />} />
+              <Route path="/login" element={<SignIn />} />
+              <Route path="/profile" element={<ProfilePage />} />
             </Routes>
           </main>
         </div>

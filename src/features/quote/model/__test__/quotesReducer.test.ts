@@ -1,4 +1,5 @@
-import { QuotesInitialState, quotesReducer, resetAuthorQuoteAC, setAuthorAC, setQuoteAC } from "../quotesReducer"
+import type { QuotesInitialState } from "../quotesReducer"
+import { quotesReducer, resetAuthorQuoteAC, setAuthorAC, setQuoteAC } from "../quotesReducer"
 
 let startState: QuotesInitialState
 
