@@ -1,6 +1,7 @@
 import { quoteApi } from "../api/quoteApi"
 import { Author, Quote } from "@/features/quote/api/quoteApi.types"
 import { AuthorAndQuote } from "@/features/profile/api/profileApi.types"
+import { resetAllDataAC } from "@/features/auth/model/authSlice"
 
 
 const initialState = {
@@ -24,7 +25,7 @@ export const quotesReducer = (state: State = initialState, action: any): State =
     case SET_QUOTE:
       return { ...state, quote: action.payload.quote }
     case RESET_AUTHOR_QUOTE:
-      return { ...state, quote: "", authorId: "", name: "" }
+      return { ...initialState }
     default:
       return state
   }
