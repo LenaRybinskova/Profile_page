@@ -1,6 +1,6 @@
 import styles from "./Header.module.scss"
 import { useAppDispatch, useAppSelector } from "../../../app/store"
-import { logoutTC } from "../../../features/auth/model/authSlice"
+import { logoutTC } from "../../../features/auth/model/authReducer"
 import { Button } from "../Button/Button"
 import { resetAuthorQuoteAC } from "../../../features/quote/model/quotesReducer"
 import { Link, useNavigate } from "react-router-dom"
@@ -24,7 +24,6 @@ export const Header = () => {
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li><Button as={Link} to="/" variant="link">About us</Button></li>
-
           {isAuth
             ? (<>
               <li>

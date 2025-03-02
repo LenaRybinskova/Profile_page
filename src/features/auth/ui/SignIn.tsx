@@ -1,9 +1,9 @@
-import { SubmitHandler, useForm } from "react-hook-form"
+import  { SubmitHandler, useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { Input } from "../../../common/components/Input/Input"
 import { Button } from "../../../common/components/Button/index"
 import styles from "./SignIn.module.scss"
-import { loginTC } from "../model/authSlice"
+import { loginTC } from "../model/authReducer"
 import { useAppDispatch } from "../../../app/store"
 
 type FormValue = {

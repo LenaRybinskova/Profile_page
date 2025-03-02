@@ -1,7 +1,7 @@
 import { configureStore, ThunkDispatch } from "@reduxjs/toolkit"
 import { AboutUsActions, publicReducer } from "../features/publicPage/model/publicReducer"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
-import { authReducer } from "../features/auth/model/authSlice"
+import { authReducer } from "../features/auth/model/authReducer"
 import { QuoteActions, quotesReducer } from "../features/quote/model/quotesReducer"
 
 

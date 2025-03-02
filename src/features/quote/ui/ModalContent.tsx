@@ -23,12 +23,8 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
     console.log("юзЭффект signal", signal)
     const data = { token, signal }
     dispatch(getAuthorTC(data)).then((res) => {
-        if (onClose) {
-          onClose()
-        }
-        if (res) {
-          callbackQuote(res)
-        }
+        if (onClose) {onClose()}
+        if (res) {callbackQuote(res)}
       }
     )
 
@@ -38,7 +34,6 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
       }
     }
   }, [])
-
 
   const handleCancel = () => {
     if (controller.current) {
@@ -53,8 +48,8 @@ export const ModalContent = ({ onClose, callbackQuote }: Props) => {
     <div className={styles.contentContainer}>
       <h3 className={styles.title}>Requesting the quote</h3>
       <div className={styles.progress}>
-        <span>Step 1:Requesting author..{author ? "Completed" : ""}</span>
-        <span>Step 2:Requesting quote..</span>
+        <span>Step 1: Requesting author..{author ? "Completed" : ""}</span>
+        <span>Step 2: Requesting quote..</span>
       </div>
 
       <Button onClick={handleCancel}>Cancel</Button>
