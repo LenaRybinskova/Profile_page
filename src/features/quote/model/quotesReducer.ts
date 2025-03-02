@@ -65,10 +65,7 @@ export const getAuthorTC = (data: any) => (dispatch: any) => {
         const authorId = res.data.authorId
         const authorName = res.data.name
 
-/*        const quoteController = new AbortController()
-        const quoteSignal = quoteController.signal*/
-
-        return quoteApi.getQuote({ token: data.token, authorId, quoteSignal:data.signal })
+        return quoteApi.getQuote({ token: data.token, authorId, quoteSignal: data.signal })
 
           .then((res) => {
             if (res.success) {
@@ -86,33 +83,3 @@ export const getAuthorTC = (data: any) => (dispatch: any) => {
       throw new Error("Failed to fetch info")
     })
 }
-
-/*export const getAuthorTC = (token: string) => (dispatch: any) => {
-
-  return quoteApi.getAuthor(token)
-    .then((res) => {
-      if (res.success) {
-        dispatch(setAuthorAC(res.data))
-
-        const authorId = res.data.authorId
-        const authorName = res.data.name
-
-        return quoteApi.getQuote({ token, authorId })
-
-          .then((res) => {
-            if (res.success) {
-              dispatch(setQuoteAC(res.data))
-              const AuthorAndQuote: AuthorAndQuote = {
-                authorName,
-                quote: res.data.quote
-              }
-              return AuthorAndQuote
-            }
-          })
-      }
-    })
-    .catch(() => {
-      throw new Error("Failed to fetch info")
-    })
-}*/
-

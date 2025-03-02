@@ -1,13 +1,20 @@
 import styles from "./Header.module.scss"
 import { LinkCustom } from "../LinkCustom/index"
-import { useAppSelector } from "../../../app/store"
-import { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "../../../app/store"
+import { logoutTC } from "../../../features/auth/model/authSlice"
+import { Button } from "../Button/Button"
+
 
 
 export const Header = () => {
 
   const isAuth = useAppSelector<string>((state) => state.auth.email)
+  const token = useAppSelector<string>((state) => state.auth.token)
+  const dispatch = useAppDispatch()
 
+  const handleSignOut=()=>{
+    dispatch(logoutTC(token))
+  }
 
   return (
     <header className={styles.containerHeader}>
@@ -15,7 +22,7 @@ export const Header = () => {
         <ul className={styles.navList}>
           <LinkCustom to={"/"}>About us</LinkCustom>
           {isAuth
-            ? <><LinkCustom to={"/profile"}>Profile</LinkCustom> <LinkCustom to={"/login"}>Sign out</LinkCustom> </>
+            ? <><LinkCustom to={"/profile"}>Profile</LinkCustom> <LinkCustom to={"/"}><Button onClick={handleSignOut}>Sign out</Button></LinkCustom> </>
             : <LinkCustom to={"/login"}>Sign in</LinkCustom>}
         </ul>
       </nav>
