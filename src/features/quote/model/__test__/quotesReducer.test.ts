@@ -1,5 +1,4 @@
 import { QuotesInitialState, quotesReducer, resetAuthorQuoteAC, setAuthorAC, setQuoteAC } from "../quotesReducer"
-import { authReducer, setAuthAC } from "@/features/auth/model/authReducer"
 
 let startState: QuotesInitialState
 
