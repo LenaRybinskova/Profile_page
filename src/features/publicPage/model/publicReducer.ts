@@ -6,12 +6,11 @@ const initialState = {
   aboutUs: ""
 }
 
-type PublicState = { aboutUs: string }
+export type PublicState = { aboutUs: string }
 
 const GET_ABOUT_US_INFO = "GET-ABOUT-US-INFO"
 
 
-// TODO: action:any нормально протипиз
 export const publicReducer = (state: PublicState = initialState, action: any): PublicState => {
   switch (action.type) {
     case GET_ABOUT_US_INFO:

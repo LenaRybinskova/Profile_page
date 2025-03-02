@@ -6,18 +6,18 @@ import type { Dispatch } from "react"
 
 const initialState = {
   quote: "",
-  authorId: "",
+  authorId: null as number | null,
   name: ""
 }
 
-type State = typeof initialState
+export type QuotesInitialState = typeof initialState
 
 const SET_AUTHOR = "SET-AUTHOR"
 const SET_QUOTE = "SET-QUOTE"
 const RESET_AUTHOR_QUOTE = "RESET-AUTHOR-QUOTE"
 
 
-export const quotesReducer = (state: State = initialState, action: any): State => {
+export const quotesReducer = (state: QuotesInitialState = initialState, action: any): QuotesInitialState => {
   switch (action.type) {
     case SET_AUTHOR:
       return { ...state, authorId: action.payload.authorId, name: action.payload.name }

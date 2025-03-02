@@ -16,7 +16,7 @@ const initialState = {
   }
 }
 
-type AuthState = typeof initialState
+export type AuthState = typeof initialState
 
 const SET_AUTH_DATA = "SET-AUTH-DATA"
 const SET_AVATAR = "SET_AVATAR"

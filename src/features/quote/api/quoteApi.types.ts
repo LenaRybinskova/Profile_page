@@ -10,7 +10,7 @@ export type Quote = {
 }
 
 export type Author = {
-  authorId: number
+  authorId: number | null
   name: string
 }
 
