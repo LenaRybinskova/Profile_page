@@ -1,5 +1,17 @@
-.loginContainer{
+.formContainer {
   display: flex;
   flex-direction: column;
-  gap: 20px
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 30%;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
 }

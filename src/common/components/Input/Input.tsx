@@ -8,22 +8,24 @@ type Props = {
   label?: string;
   variant?: "email" | "password"
   placeholder?: string;
-  className?:string
+  className?: string
 };
 
-export const Input = ({ name, control, label, variant="email", className }: Props) => {
+export const Input = ({ name, control, label, variant = "email", placeholder }: Props) => {
   const { field, fieldState: { error } } = useController({ name, control, defaultValue: "" })
 
   return (
-    <div className={styles.container}>
+    <div className={styles.inputContainer}>
       <label htmlFor={name} className={styles.label}>{label}</label>
       <input
         {...field}
         id={name}
-        placeholder={label}
+        placeholder={placeholder}
         className={styles.input}
       />
-      {variant === "email" ? <span className={styles.terms}>We`ll never share your email anyone else.</span>:""}
+      {error
+        ? (<span className={styles.error}>{error.message}</span>)
+        : (variant === "email" && <span className={styles.terms}>We`ll never share your email with anyone else.</span>)}
     </div>
   )
 }
