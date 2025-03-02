@@ -21,6 +21,7 @@ const SET_AUTH_DATA = "SET-AUTH-DATA"
 const SET_AVATAR = "SET_AVATAR"
 const SET_TOKEN = "SET-TOKEN"
 const SET_PROFILE = "SET-PROFILE"
+const RESET_ALL_DATA = "RESET-ALL-DATA"
 
 // TODO: any типизация
 export const authReducer = (state: AuthState = initialState, action: any): AuthState => {
@@ -33,6 +34,8 @@ export const authReducer = (state: AuthState = initialState, action: any): AuthS
       return { ...state, token: action.payload }
     case SET_PROFILE:
       return { ...state, profile: action.payload }
+    case RESET_ALL_DATA:
+      return { ...initialState }
     default:
       return state
   }
@@ -60,8 +63,14 @@ export const setTokenAC = (token: string) => {
 
 export const setProfileAC = (profile: Profile) => {
   return {
-    type:SET_PROFILE,
+    type: SET_PROFILE,
     payload: profile
+  } as const
+}
+
+export const resetAllDataAC = () => {
+  return {
+    type: RESET_ALL_DATA
   } as const
 }
 
@@ -69,7 +78,9 @@ export type SetAuthAC = ReturnType<typeof setAuthAC>
 export type SetAvatarAC = ReturnType<typeof setAvatarAC>
 export type SetTokenAC = ReturnType<typeof setTokenAC>
 export type SetProfileAC = ReturnType<typeof setProfileAC>
-export type AuthActions = SetAuthAC | SetAvatarAC | SetTokenAC | SetProfileAC
+export type ResetAllDataAC = ReturnType<typeof resetAllDataAC>
+
+export type AuthActions = SetAuthAC | SetAvatarAC | SetTokenAC | SetProfileAC | ResetAllDataAC
 
 
 export const loginTC = (data: Login) => (dispatch: any) => {
@@ -90,6 +101,16 @@ export const loginTC = (data: Login) => (dispatch: any) => {
         }
       }
     )
+    .catch(() => {
+      throw new Error("Failed to fetch info")
+    })
+}
+
+export const logoutTC = (token: string) => (dispatch: any) => {
+  return authApi.logout(token)
+    .then(() => {
+    dispatch(resetAllDataAC())
+  })
     .catch(() => {
       throw new Error("Failed to fetch info")
     })
