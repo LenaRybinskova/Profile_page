@@ -14,9 +14,9 @@ export const ProfilePage = () => {
   const [concatText, setConcatText] = useState<string>("")
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const basePath = import.meta.env.BASE_URL;
 
   const isAuth = useAppSelector<string>((state) => state.auth.email)
-  const avatar = useAppSelector<string>((state) => state.auth.avatar)
   const profile = useAppSelector<Profile>((state) => state.auth.profile)
   const name = profile.fullname.split(" ")
 
@@ -38,7 +38,7 @@ export const ProfilePage = () => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.userInfo}>
-        <img src={avatar} alt={"avatar"} className={styles.avatar} />
+        <img src={`${basePath}/assets/images/avatar.svg`} alt={"avatar"} className={styles.avatar} />
         <div className={styles.welcome}>
           <p>Welcome, {name[0]}!</p>
           <Button onClick={handleUpdateQuote}>Update</Button>

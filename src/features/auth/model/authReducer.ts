@@ -28,8 +28,6 @@ export const authReducer = (state: AuthState = initialState, action: any): AuthS
   switch (action.type) {
     case SET_AUTH_DATA:
       return { ...state, email: action.payload.email, password: action.payload.password }
-    case SET_AVATAR:
-      return { ...state, avatar: action.payload }
     case SET_TOKEN:
       return { ...state, token: action.payload }
     case SET_PROFILE:
@@ -89,7 +87,6 @@ export const loginTC = (data: Login) => async (dispatch: Dispatch<AuthActions>) 
     .then((res) => {
       if (res.success) {
         dispatch(setAuthAC(data))
-        dispatch(setAvatarAC("/assets/images/avatar.svg"))
         dispatch(setTokenAC(res.data.token))
         return profileApi.getProfile(res.data.token)
       } else {
