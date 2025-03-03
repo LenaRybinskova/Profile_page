@@ -15,6 +15,9 @@ https://lenarybinskova.github.io/Profile_page/
 ![publicPage](https://github.com/LenaRybinskova/Profile_page/blob/main/publicPage.bmp)
 
 Нажав на кнопку Sign in , указав логин, пароль (валидация: все поля обязательны к заполнению, можно без @) переходите на страницу /profile.
+![sign-up](https://github.com/LenaRybinskova/Profile_page/blob/main/sign-up.bmp)
+
+
 Тут отображаются картинка и имя авторизовавшегося юзера.
 
 Нажав на кнопку Update появится модальное окно и будут отображаться результаты последовательных запросов за автором, затем за цитатой. 
