@@ -1,27 +1,24 @@
-# vite-template-redux
+# Random quote App
+## В проекте использовались библиотеки:
+- React
+- React - Redux
+- React-router-dom
+- React-hook-form
+- jest tests
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+- Vite (инструмент сборки)
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
+https://lenarybinskova.github.io/Profile_page/
 
-## Goals
+Со старта приложения Вы попадаете на публичную главную страницу с информацией о Компании.
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+Нажав на кнопку Sign in , указав логин, пароль (валидация: все поля обязательны к заполнению, можно без @) переходите на страницу /profile.
+Тут отображаются картинка и имя авторизовавшегося юзера.
 
-## Scripts
+Нажав на кнопку Update появится модальное окно и будут отображаться результаты последовательных запросов за автором, затем за цитатой. 
+В любой момент можно отменить отправку запросов, нажав кнопку Cancel.
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+Нажав кнопку Sign out очищается стейт, прекращается доступ к странице /profile, остается доступна только публичная главная страница.
 
-## Inspiration
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+
