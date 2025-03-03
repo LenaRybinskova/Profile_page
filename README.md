@@ -11,6 +11,7 @@
 https://lenarybinskova.github.io/Profile_page/
 
 Со старта приложения Вы попадаете на публичную главную страницу с информацией о Компании.
+![publicPage](https://github.com/LenaRybinskova/Profile_page/blob/main/publicPage.bmp
 
 Нажав на кнопку Sign in , указав логин, пароль (валидация: все поля обязательны к заполнению, можно без @) переходите на страницу /profile.
 Тут отображаются картинка и имя авторизовавшегося юзера.
